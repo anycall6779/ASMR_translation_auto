@@ -1,21 +1,20 @@
-# ASMR 자동 자막 생성기 - 의존성 목록
-# setup.bat 또는 pip install -r requirements.txt 로 설치
+# ASMR Studio — Termux 의존성
+#
+# ⚠ 직접 pip install -r 하지 말고 setup.sh 사용 권장
+# scipy/numpy는 pkg로 먼저 설치해야 컴파일 없이 빠름:
+#   pkg install python-numpy python-scipy
+#   pip install -r requirements.txt --prefer-binary
 
-# ── 음성 인식 (택일, 둘 다 설치해도 됨) ──
-# faster-whisper: 더 빠르고 메모리 효율적 (권장)
+# 웹 서버
+flask>=3.0.0
+
+# 번역 (Playwright 대신 — Termux 환경)
+deep-translator>=1.11.0
+
+# 오디오 처리 (numpy/scipy는 pkg로 설치)
+soundfile>=0.12.1
+noisereduce>=3.0.2
+
+# STT (둘 중 하나 설치)
 faster-whisper>=1.0.0
-# openai-whisper: 폴백 (faster-whisper 실패 시)
-# openai-whisper>=20231117
-
-# ── 오디오 처리 ──
-soundfile>=0.12.1       # WAV/FLAC/OGG 등 읽기
-noisereduce>=3.0.2      # ASMR 노이즈 감소
-numpy>=1.24.0
-
-# ── MP3/M4A 지원 (선택사항) ──
-# librosa는 ffmpeg 필요, soundfile만으로 WAV는 처리 가능
-librosa>=0.10.0         # MP3·M4A 등 추가 포맷 지원 (선택)
-
-# ── 표준 라이브러리 (설치 불필요) ──
-# tkinter  - Python 내장
-# threading, pathlib, tempfile - Python 내장
+# openai-whisper>=20231117  # faster-whisper 실패 시
